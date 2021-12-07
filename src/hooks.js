@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function useFlip() {
-    const [isFacingUp, setIsFacingUp] = useState(true);
+function useFlip(initial = true) {
+    const [isFacingUp, setIsFacingUp] = useState(initial);
     const flipCard = () => {
         setIsFacingUp(isUp => !isUp);
       };
