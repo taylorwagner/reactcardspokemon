@@ -13,14 +13,14 @@ function useFlip(initial = true) {
 function useAxios(key, url) {
     const [res, setRes] = useLocalStorage(key);
     
-    const addResData = async (formatter = data => data, restOfUrl = "") => {
+    const add = async (formatter = data => data, restOfUrl = "") => {
         const r = await axios.get(`${url}${restOfUrl}`);
         setRes(data => [...data, formatter(r.data)]);
     };
 
     const clear = () => setRes([]);
 
-    return [res, addResData, clear];
+    return [res, add, clear];
 }
 
 function useLocalStorage(key, initialValue = []) {
