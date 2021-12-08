@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import uuid from "uuid";
-import axios from "axios";
+import React from "react";
 import { useAxios } from "./hooks";
 import PlayingCard from "./PlayingCard";
 import "./PlayingCardList.css";
@@ -10,12 +8,14 @@ const API_BASE_URL = "https://deckofcardsapi.com/api/deck/new/draw/";
 /* Renders a list of playing cards.
  * Can also add a new card at random. */
 function CardTable() {
-  const [cards, addCard] = useAxios()
+  const [cards, addCard, clear] = useAxios("cards", API_BASE_URL);
+
   return (
     <div className="PlayingCardList">
       <h3>Pick a card, any card!</h3>
       <div>
-        <button onClick={addCard}>Add a playing card!</button>
+        <button onClick={() => addCard(formatCard)}>Add a playing card!</button>
+        <button onClick={clear}>Clear</button>
       </div>
       <div className="PlayingCardList-card-area">
         {cards.map(cardData => (
