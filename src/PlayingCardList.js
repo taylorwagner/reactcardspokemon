@@ -1,6 +1,7 @@
 import React from "react";
 import { useAxios } from "./hooks";
 import PlayingCard from "./PlayingCard";
+import { formatCard } from "./helpers";
 import "./PlayingCardList.css";
 
 const API_BASE_URL = "https://deckofcardsapi.com/api/deck/new/draw/";
@@ -19,7 +20,7 @@ function CardTable() {
       </div>
       <div className="PlayingCardList-card-area">
         {cards.map(cardData => (
-          <PlayingCard key={cardData.id} front={cardData.cards[0].image} />
+          <PlayingCard key={cardData.id} front={cardData.image} />
         ))}
       </div>
     </div>
